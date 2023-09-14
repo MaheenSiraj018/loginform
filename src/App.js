@@ -11,7 +11,7 @@ function App() {
     <Routes>
       <Route path='/' exact Component={Signup} />
       <Route path='/login' Component={Login} />
-      <Route path='/Home'Component={Home}/>
+      <Route path='/Home/:name'Component={Home}/>
     </Routes>
     </BrowserRouter>
   )

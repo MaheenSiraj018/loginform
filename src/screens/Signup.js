@@ -5,19 +5,34 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 const Signup =() => {
+    const getusers =() =>{
+        const users = localStorage.getItem('users');
+        if (users) {
+            var parseusers = JSON.parse(users);
+            console.log("Users retrieved");
+            return parseusers;
+        }
+        else {
+            return [{firstName: "",
+            lastName: "",
+            age: "",
+            email:"",
+            password: "",}];
+        }
+    }
+
+
     const [email,setEmail]=useState("");
-    const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
-        age: "",
-        password: "",
-      });
+    const [formData, setFormData] = useState(getusers);
       const navigate = useNavigate();
 
       const emailvalidator=(email)=>{
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         return emailRegex.test(email);
     }
+    useEffect(()=>{
+        localStorage.setItem("users",JSON.stringify(formData));
+    },[formData])
 
     useEffect(() => {
         var emailchecker = document.getElementById('emailcheck');
@@ -57,8 +72,9 @@ const Signup =() => {
               return;
             }
             else{
+                const name = formData.firstName; 
                 document.getElementById('error').textContent="";
-                navigate('/Home');
+                navigate(`/Home/${name}`);
             }
           
           console.log("Form Submitted Successfully");
@@ -74,7 +90,8 @@ const Signup =() => {
         <Input type="text" placeholder="Enter your Last Name" onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}/>
         <Input type="number" placeholder="Enter your Age" onChange={(e) => setFormData({ ...formData, age: e.target.value })} min="0" max="100"/>
         <Input type="email" placeholder="Enter your Email Address" onChange={(e) =>
-             {setEmail(e.target.value);}}/>
+             {setEmail(e.target.value);
+                setFormData({ ...formData, email: e.target.value })}}/>
         <p id="emailcheck"></p>
         <Input type="password" placeholder="Enter Password" onChange={(e) => setFormData({ ...formData, password: e.target.value })}/>
         <Button name="Create Account"/>

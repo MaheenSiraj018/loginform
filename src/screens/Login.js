@@ -29,10 +29,15 @@ const Login = () => {
     }
       }, [email]);
 
+
       const handlesubmit =(e)=>{
         e.preventDefault();
         const ValidEmail = emailvalidator(email); 
-        if(password==="" || !ValidEmail){
+
+        const users=JSON.parse(localStorage.getItem('users'));
+        const authenticatedUser = users.find((user) => user.email === email && user.password === password);
+
+        if(password==="" || !ValidEmail ||!authenticatedUser){
             document.getElementById('error').textContent="Please enter all the data first";
             return;
         }
