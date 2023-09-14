@@ -1,13 +1,9 @@
 import React from "react";
 import './Button.css';
 
-const handlesubmit=()=>{
-
-}
-
-const Button=({name})=>{
+const Button=({name,onClick=null})=>{
     return(
-        <button type="submit" className="btn" onClick={handlesubmit}>{name}</button>
+        <button type="submit" className="btn" onClick={onClick} >{name}</button>
     )
 }
 
