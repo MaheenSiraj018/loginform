@@ -1,0 +1,21 @@
+.input{
+    height:40px;
+    width:40vh;
+    border: none;
+    border-bottom: 1px solid black;
+}
+.input:focus {
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+  }
+
+  @media only screen and (max-width: 767px){
+    .input{
+        width:30vh;}
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1023px){
+    .input{
+        width:30vh;
+    }
+  }

@@ -1,38 +1,97 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap');
+
+body{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, #5b59d3, #b96eda, #d63995);
+  background-size: 100% 100%;
+}
+
+.main{
+  display: flex;
+  flex-direction: column;
+  gap:1vw;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  
+  
+}
+.maindiv{
+  border: 1px solid black;
+  border-radius: 25px;
+  /* background-color: aquamarine; */
+  margin-top: 2.5vw;
+  width:30vw;
+  align-items: center;
+  background-color: white;
+}
+
+#link{
+  margin: 0;
+  padding: 0;
+}
+
+#noacc{
+  margin: 0;
+  padding: 0;
+}
+
+#emailcheck{
+  margin: 0;
+  padding: 0;
+  font-size: 1vw;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.header{
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2vw;
+}
+
+#error{
+  color: red;
+  font-size: 1vw;
+  font-family: 'Montserrat', sans-serif;
+}
+.home-header{
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media only screen and (max-width: 767px) {
+  .main{
+    gap:4vw;
+  }
+  .maindiv{
+    margin-top: 5vw;
+    width:75vw;
+  }
+  .header{
+    font-size: 5vw;
+  }
+  #emailcheck{
+    font-size: 3vw;
+  }
+  #error{
+    font-size: 3vw;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .main{
+    gap:2vw;
   }
-  to {
-    transform: rotate(360deg);
+  .maindiv{
+    margin-top: 1vw;
+    width:55vw;
+  }
+  #emailcheck{
+    font-size: 2vw;
+  }
+  #error{
+    font-size: 2vw;
   }
 }
