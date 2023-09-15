@@ -29,21 +29,25 @@ const Login = () => {
     }
       }, [email]);
 
-
-      const handlesubmit =(e)=>{
+      const handlesubmit = (e) => {
         e.preventDefault();
         const ValidEmail = emailvalidator(email); 
-
-        const users=JSON.parse(localStorage.getItem('users'));
+      
+        const users = JSON.parse(localStorage.getItem('users'));
         const authenticatedUser = users.find((user) => user.email === email && user.password === password);
-
-        if(password==="" || !ValidEmail ||!authenticatedUser){
-            document.getElementById('error').textContent="Please enter all the data first";
-            return;
+      
+        if (password === "" || !ValidEmail ) {
+          document.getElementById('error').textContent = "Please enter all the data first";
+          return;
+        } 
+        else if(!authenticatedUser){
+          document.getElementById('error').textContent = "Email & Password doesn't match.";
+          return;
         }
-        else{
-            document.getElementById('error').textContent="";
-            navigate('/Home');
+        else {
+          document.getElementById('error').textContent = "";
+          const name = authenticatedUser.firstName; // Access the name property directly
+          navigate(`/Home/${name}`);
         }
       }
       
